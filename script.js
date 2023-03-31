@@ -40,7 +40,7 @@ buttonCalculate.addEventListener("click", function() {
   let weight = parseFloat(prompt("Digite seu peso em kg:"));
   let physicalActivityLevel = parseFloat(prompt("Digite seu nivel de atividade física (1.2 para sedentário, 1.375 para levemente ativo, 1.55 para moderadamente ativo, 1.725 para muito ativo e 1.9 para extremamente ativo):"));
   
-  let result = calculateDailyConsumption(age, sex, height, weight, physicalActivityLevel);
+  let result = calculateDailyConsumption(age, sex.toLowerCase(), height, weight, physicalActivityLevel);
   
   // Exibir os resultados na página HTML
   document.getElementById("get").textContent = `Seu gasto energético total é: ${result.get} Kcal/dia`;
