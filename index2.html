@@ -34,20 +34,20 @@
             <p>Para darmos continuidade no processo, você precisa preencher os formulários com o seu peso, a altura, a idade, o sexo, o nível de atividade física e o estado fisiológico para que seja calculado seu gasto calórico e, com isso, verificar a quantidade de consumo diário recomendado de macronutrientes e micronutrientes.</p>
             <h2 class="h2-1">Segue abaixo o Formulário:</h2>
             <form action="" method="get" id="form">
-                <label for="age">Digite sua idade:
-                </label><br>
+                <label for="age" class="label-age">Digite sua idade:
+                </label>
                 <input type="number" id="age" name="age" placeholder="18" title="Apenas números"
                 required autofocus><br>
                 <label for="sex">Digite seu sexo:
-                </label><br>
+                </label>
                 <input type="text" id="sex" name="sex" placeholder="masculino / feminino" title="Digite seu sexo" required><br>
                 <label for="height">Digite sua altura em centímetros:
-                </label><br>
+                </label>
                 <input type="text" id="height" name="height" placeholder="170" title="Digite sua altura utilizando '.'" required><br>
-                <label for="weight">Digite seu peso em kg:</label><br>
+                <label for="weight">Digite seu peso em kg:</label>
                 <input type="text" id="weight" name="weight" placeholder="70" required><br>
                 <label for="physicalActivityLevel">Digite seu nivel de atividade física (1.2 para sedentário, 1.375 para levemente ativo, 1.55 para moderadamente ativo, 1.725 para muito ativo e 1.9 para extremamente ativo):
-                </label><br>
+                </label>
                 <input type="text" id="physicalActivityLevel" name="physicalActivityLevel" placeholder="1.2 ou 1.375 ou 1.55 ou 1.725 ou 1.9" required><br>
                 <button type="submit" id="calculate" onclick="calculateDailyConsumption()" value="">calcule aqui</button>
             </form>
@@ -70,6 +70,6 @@
         <span id="vitaminaC"></span>
     </div>
     </footer>
-    <script src="./chatgpt.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

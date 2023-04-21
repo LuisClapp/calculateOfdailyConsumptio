@@ -32,22 +32,104 @@ function calculateDailyConsumption (age, sex, height, weight, physicalActivityLe
   };
 }
 
-let buttonCalculate = document.getElementById("button-calculate");
-buttonCalculate.addEventListener("click", function() {
-  let age = parseFloat(prompt("Digite sua idade:"));
-  let sex = prompt("Digite seu sexo:");
-  let height = parseFloat(prompt("Digite sua altura em metros:"));
-  let weight = parseFloat(prompt("Digite seu peso em kg:"));
-  let physicalActivityLevel = parseFloat(prompt("Digite seu nivel de atividade física (1.2 para sedentário, 1.375 para levemente ativo, 1.55 para moderadamente ativo, 1.725 para muito ativo e 1.9 para extremamente ativo):"));
-  
-  let result = calculateDailyConsumption(age, sex.toLowerCase(), height, weight, physicalActivityLevel);
-  
-  // Exibir os resultados na página HTML
-  document.getElementById("get").textContent = `Seu gasto energético total é: ${result.get} Kcal/dia`;
-  document.getElementById("proteinas").textContent = `Cálculo da quantidade diária de macronutrientes recomendada: ${result.proteinas} Gramas de proteína`;
-  document.getElementById("carboidratos").textContent = `Cálculo da quantidade diária de macronutrientes recomendada: ${result.carboidratos} Gramas de carboidrato`;
-  document.getElementById("gorduras").textContent = `Cálculo da quantidade diária de macronutrientes recomendada: ${result.gorduras} Gramas de gordura`;
-  document.getElementById("calcio").textContent = `Cálculo da quantidade diária de micronutrientes recomendada: ${result.calcio} Miligramas de calcio por dia`;
-  document.getElementById("ferro").textContent = `Cálculo da quantidade diária de micronutrientes recomendada: ${result.ferro} Miligramas de ferro por dia`;
+// Selecionar o botão de submit do formulário
+const form = document.querySelector('form');
+const submitButton = form.querySelector('button[type="submit"]');
+
+// Adicionar um ouvinte de eventos para o botão de submit
+submitButton.addEventListener('click', function(event) {
+  event.preventDefault(); // previne o envio do formulário e recarregamento da página
+
+  // Obter os valores do formulário
+  const ageInput = document.getElementById('age');
+  const ageValue = ageInput.value;
+  const sex = document.getElementById('sex').value;
+  const height = document.getElementById('height').value;
+  const weight = document.getElementById('weight').value;
+  const physicalActivityLevel = document.getElementById('physicalActivityLevel').value;
+
+  // Validar os campos do formulário
+  let isValid = true;
+  const ageRegex = /^[0-9]{1,2}$/;
+  if (!ageRegex.test(ageValue)) {
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = "Idade inválida";
+    errorMessage.style.color = "red";
+    errorMessage.style.fontFamily = "sans-serif";
+    ageInput.parentNode.appendChild(errorMessage);
+    // Recarregar a página depois de 5000 milisegundos se cair no error e resetar o valor do campo input
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
+    isValid = false;
+    ageInput.value = '';
+  }
+
+  if (sex !== 'masculino' && sex !== 'feminino') {
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = "Sexo diferente de masculino ou feminino";
+    errorMessage.style.color = "red";
+    document.getElementById('sex').parentNode.appendChild(errorMessage);
+    // Recarregar a página depois de 5000 milisegundos se cair no error e resetar o valor do campo input
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
+    isValid = false;
+    document.getElementById('sex').value = '';
+  }
+
+  const heightRegex = /^[0-9]{2,3}$/;
+  if (!heightRegex.test(height)) {
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = "Altura inválida";
+    errorMessage.style.color = "red";
+    document.getElementById('height').parentNode.appendChild(errorMessage);
+    // Recarregar a página depois de 5000 milisegundos se cair no error e resetar o valor do campo input
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
+    isValid = false;
+    document.getElementById('height').value = '';
+  }
+
+  const weightRegex = /^[0-9]{2,3}$/;
+  if (!weightRegex.test(weight)) {
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = "Peso inválido";
+    errorMessage.style.color = "red";
+    document.getElementById('weight').parentNode.appendChild(errorMessage);
+    // Recarregar a página depois de 5000 milisegundos se cair no error e resetar o valor do campo input
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
+    isValid = false;
+    document.getElementById('weight').value = '';
+  }
+
+  if (physicalActivityLevel !== '1.2' && physicalActivityLevel !== '1.375' && physicalActivityLevel !== '1.55' && physicalActivityLevel !== '1.725' && physicalActivityLevel !== '1.9') {
+    const errorMessage = document.createElement("div");
+    errorMessage.textContent = "Nível de atividade física inválida";
+    errorMessage.style.color = "red";
+    document.getElementById('physicalActivityLevel').parentNode.appendChild(errorMessage);
+    // Recarregar a página depois de 5000 milisegundos se cair no error e resetar o valor do campo input
+    setTimeout(() => {
+      location.reload();
+    }, 5000);
+    isValid = false;
+    document.getElementById('physicalActivityLevel').value = '';
+  }
+
+  // Se os campos são válidos, chamar a função calculateDailyConsumption e exibir os resultados
+  if (isValid) {
+    // Chamar a função calculateDailyConsumption e armazenar o resultado em uma variável
+    const result = calculateDailyConsumption(ageValue, sex, height, weight, physicalActivityLevel);
+
+      // Exibir os resultados na página HTML
+    document.getElementById("get").textContent = `Seu gasto energético total é: ${result.get} Kcal/dia`;
+    document.getElementById("proteinas").textContent = `Cálculo da quantidade diária de macronutrientes recomendada: ${result.proteinas} Gramas de proteína`;
+    document.getElementById("carboidratos").textContent = `Cálculo da quantidade diária de macronutrientes recomendada: ${result.carboidratos} Gramas de carboidrato`;
+    document.getElementById("gorduras").textContent = `Cálculo da quantidade diária de macronutrientes recomendada: ${result.gorduras} Gramas de gordura`;
+    document.getElementById("calcio").textContent = `Cálculo da quantidade diária de micronutrientes recomendada: ${result.calcio} Miligramas de calcio por dia`;
+    document.getElementById("ferro").textContent = `Cálculo da quantidade diária de micronutrientes recomendada: ${result.ferro} Miligramas de ferro por dia`;
   document.getElementById("vitaminaC").textContent = `Cálculo da quantidade diára de vitaminaC recomendada: ${result.vitaminaC} Miligramas de vitaminaC por dia`;
-});
+}});
