@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">   
+        <ul>
+            <li class="home"><a href="default.asp">Home</a></li>
+            <li class="contact"><a href="contact.asp">Contact</a></li>
+            <li class="logo"><a href="default.asp">Cuide da sua saúde</a></li>
+            <li class="about"><a href="about.asp">About</a></li>
+          </ul>
+    </header>
+    <main>
+        <h1>Cálculo da necessidade energética</h1>
+        <article>
+            <h2 class="h2">Como saber o gasto calórico do paciente?</h2>
+            <p>É muito comum existir uma confusão entre o gasto de calorias e a perda de peso. Mesmo estando relacionados, são duas coisas diferentes. Por isso, para quem busca emagrecer de forma saudável, é essencial entender como calcular gasto calórico diário e reeducar a alimentação.</p>
+
+            <p>O cálculo da necessidade energética de uma pessoa estima a produção de energia baseado nas transferências gasosas de seu organismo com o meio ambiente. Considerando que o oxigênio gasto é disposto para oxidar substâncias energéticas, como as proteínas, carboidratos e lipídeos, e que o gás carbônico produzido é expelido pela respiração, pode-se, então, calcular a quantidade total de energia produzida.</p> 
+                
+            <p>Então, para mensurar o gasto energético, são utilizadas equações preditivas conforme o peso, a altura, a idade, o sexo, o nível de atividade física e o estado fisiológico do paciente.</p>
+            <p class="lastLine">Para maiores informações, pode-se acessar o blog Dietbox clicando no link ao lado.  
+                <a  class="dietbox" href="https://blog.dietbox.me/calculo-da-necessidade-energetica-como-saber-o-gasto-calorico-do-paciente/" target="_blank">Dietbox</a>
+            </p>
+            <p>Para darmos continuidade no processo, você precisa preencher os formulários com o seu peso, a altura, a idade, o sexo, o nível de atividade física e o estado fisiológico para que seja calculado seu gasto calórico e, com isso, verificar a quantidade de consumo diário recomendado de macronutrientes e micronutrientes.</p>
+            <h2 class="h2-1">Segue abaixo o Formulário:</h2>
+            <form action="" method="get" id="form">
+                <label for="age">Digite sua idade:
+                </label><br>
+                <input type="number" id="age" name="age" placeholder="18" title="Apenas números"
+                required autofocus><br>
+                <label for="sex">Digite seu sexo:
+                </label><br>
+                <input type="text" id="sex" name="sex" placeholder="masculino / feminino" title="Digite seu sexo" required><br>
+                <label for="height">Digite sua altura em centímetros:
+                </label><br>
+                <input type="text" id="height" name="height" placeholder="170" title="Digite sua altura utilizando '.'" required><br>
+                <label for="weight">Digite seu peso em kg:</label><br>
+                <input type="text" id="weight" name="weight" placeholder="70" required><br>
+                <label for="physicalActivityLevel">Digite seu nivel de atividade física (1.2 para sedentário, 1.375 para levemente ativo, 1.55 para moderadamente ativo, 1.725 para muito ativo e 1.9 para extremamente ativo):
+                </label><br>
+                <input type="text" id="physicalActivityLevel" name="physicalActivityLevel" placeholder="1.2 ou 1.375 ou 1.55 ou 1.725 ou 1.9" required><br>
+                <button type="submit" id="calculate" onclick="calculateDailyConsumption()" value="">calcule aqui</button>
+            </form>
+          </article>
+    </main>    
+    <footer>
+    <div class="gastoEnergetico"> 
+        <span id="get"></span>
+    </div>
+    <div class="macronutrientes">
+        <span id="proteinas"></span>
+        <span id="carboidratos"></span>
+        <span id="gorduras"></span>
+    </div>
+    <div class="micronutrientes">  
+        <span id="calcio"></span>
+        <span id="ferro"></span>
+    </div>
+    <div class="vitaminaC"> 
+        <span id="vitaminaC"></span>
+    </div>
+    </footer>
+    <script src="./chatgpt.js"></script>
+</body>
+</html>
